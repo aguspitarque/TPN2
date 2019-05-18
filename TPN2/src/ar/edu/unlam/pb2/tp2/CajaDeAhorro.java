@@ -1,43 +1,44 @@
 package ar.edu.unlam.pb2.tp2;
 
+public class CajaDeAhorro extends CuentaSueldo {
+	private Double cobroAdd = 6.0;
+	private Integer contador = 0;
 
-public class CajaDeAhorro extends CuentaSueldo{
 	public CajaDeAhorro(Double saldo) {
 		super(saldo);
 	}
-	
+
 	public Boolean extraer(Double cantidad) {
-		Integer i;
-		for(i=0;i<6;i++) {
-		if(cantidad>this.saldo) {
-			return false;
-		}
-		else {
-			this.saldo= this.saldo-cantidad;
+		contador++;
+
+		if (contador < 6 && cantidad < super.saldo) {
+			super.saldo -= cantidad;
+			return true;
+		} else {
+			if (cantidad > super.saldo) {
+				super.saldo = 0.0;
+				return false;
+			} else {
+				super.saldo = super.saldo - cantidad - cobroAdd;
+			}
 			return true;
 		}
 	}
-		if(cantidad>this.saldo) {
-			return false;
-		}
-		else {
-			this.saldo= this.saldo-cantidad-6.0;
-			return true;
-		}
-		
-		
+
+	public Integer getContador() {
+		return contador;
 	}
-	
+
 	public void depositar(Double cantidad) {
-		this.saldo = this.saldo+cantidad;
+		this.saldo = this.saldo + cantidad;
 	}
-	
 
 	public Double getSaldo() {
 		return saldo;
 	}
 
 	public void setSaldo(Double saldo) {
+		contador = 0;
 		this.saldo = saldo;
 	}
 
@@ -65,5 +66,5 @@ public class CajaDeAhorro extends CuentaSueldo{
 			return false;
 		return true;
 	}
-	
+
 }
