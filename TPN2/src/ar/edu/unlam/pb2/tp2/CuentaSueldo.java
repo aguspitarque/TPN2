@@ -1,7 +1,5 @@
 package ar.edu.unlam.pb2.tp2;
 
-
-
 public class CuentaSueldo {
 	protected Double saldo;
 	
@@ -57,4 +55,9 @@ public class CuentaSueldo {
 			return false;
 		return true;
 	}
+
+	
+	
+	
+	
 }
